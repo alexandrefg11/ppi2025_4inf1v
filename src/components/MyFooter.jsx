@@ -10,7 +10,7 @@ export default function MyFooter() {
       </div>
 
       <div className={styles.center}>
-        <p className={styles.name}>Aluno: Victor Alexandre Figueiredo De Oliveira</p>
+        <p className={styles.name}>Discente: Victor Alexandre Figueiredo De Oliveira</p>
       </div>
 
       <div className={styles.right}>
@@ -21,7 +21,7 @@ export default function MyFooter() {
 " target="_blank" rel="noopener noreferrer">
           <Instagram size={24} />
         </a>
-        <a href="https://mail.google.com/mail/u/0/#chat/dm/u4kPACAAAAE">
+        <a href="https://mail.google.com/mail/u/0/#inbox">
           <Mail size={24} />
         </a>
       </div>
