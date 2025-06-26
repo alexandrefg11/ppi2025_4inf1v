@@ -27,8 +27,7 @@
     transform: scale(1.05);
 }
 
-.warning {
-    color: red;
-    font-weight: bold;
-    margin-top: 10px;
+.buttons {
+    display: flex;
+    gap: 1rem;
 }
