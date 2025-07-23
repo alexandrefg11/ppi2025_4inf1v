@@ -3,6 +3,11 @@ import styles from "./Header.module.css";
 import { Link } from "react-router";
 
 export function Header({ cart }) {
+  const total = cart.reduce(
+    (sum, product) => sum + product.price * product.quantity,
+    0
+  );
+
   return (
     <div className={styles.container}>
       <Link to="/" className={styles.link}><h1>TJA Megastore</h1></Link>
@@ -10,10 +15,7 @@ export function Header({ cart }) {
         <div className={styles.cartInfo}>
           <ShoppingBasket size={32} />
           <p>
-            Total: ${" "}
-            {cart
-              .reduce((total, product) => total + product.price, 0)
-              .toFixed(2)}
+            Total: R$ {total.toFixed(2)}
           </p>
         </div>
       </Link>
