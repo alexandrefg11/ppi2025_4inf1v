@@ -15,7 +15,7 @@ export function Header({ cart }) {
         <div className={styles.cartInfo}>
           <ShoppingBasket size={32} />
           <p>
-            Total: R$ {total.toFixed(2)}
+            Total: $ {total.toFixed(2)}
           </p>
         </div>
       </Link>
