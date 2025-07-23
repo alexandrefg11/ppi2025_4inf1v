@@ -4,11 +4,22 @@ export function Cart({ cart, onIncrease, onDecrease, onRemove, onClear }) {
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start" }}>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "2.5fr 1.2fr",
+        gap: "3.5rem",
+        alignItems: "flex-start",
+        maxWidth: "1500px",
+        margin: "3rem auto",
+        minHeight: "85vh",
+        padding: "0 2rem",
+      }}
+    >
       {/* Coluna dos produtos */}
-      <div className={styles.cart} style={{ flex: 2 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <h2 style={{ fontSize: "1.4rem", fontWeight: "bold", margin: 0, color: "#fff" }}>
+      <div className={styles.cart} style={{ minWidth: 0 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+          <h2 style={{ fontSize: "2rem", fontWeight: "bold", margin: 0, color: "#fff" }}>
             <span style={{ color: "#ff6600", marginRight: 8 }}>🛒</span>
             PRODUTO E SERVIÇO
           </h2>
@@ -16,7 +27,7 @@ export function Cart({ cart, onIncrease, onDecrease, onRemove, onClear }) {
             REMOVER TODOS OS PRODUTOS
           </button>
         </div>
-        <div style={{ color: "#fff", fontSize: "1rem", margin: "0.5rem 0 1.5rem 0" }}>
+        <div style={{ color: "#fff", fontSize: "1.25rem", margin: "0.9rem 0 2rem 0" }}>
           Vendido e entregue por: <b style={{ color: "#fff" }}>KaBUM!</b>
         </div>
         {cart.length === 0 ? (
@@ -27,10 +38,10 @@ export function Cart({ cart, onIncrease, onDecrease, onRemove, onClear }) {
               <li key={index} className={styles.cartItem}>
                 <img src={product.thumbnail} alt={product.title} />
                 <div style={{ flex: 1 }}>
-                  <h3 style={{ fontWeight: "bold", fontSize: "1.1rem", marginBottom: 4, color: "var(--gray-800)" }}>{product.title}</h3>
-                  <div style={{ color: "var(--gray-600)", fontSize: "0.95rem", marginBottom: 8 }}>
-                    Com desconto no PIX: <b style={{ color: "#009900" }}>R$ {(product.price * 0.9).toFixed(2)}</b><br />
-                    Parcelado no cartão sem juros: <b style={{ color: "var(--gray-800)" }}>R$ {(product.price).toFixed(2)}</b>
+                  <h3 style={{ fontWeight: "bold", fontSize: "1.2rem", marginBottom: 4, color: "var(--gray-800)" }}>{product.title}</h3>
+                  <div style={{ color: "var(--gray-600)", fontSize: "1rem", marginBottom: 8 }}>
+                    Com desconto no PIX: <b style={{ color: "#009900" }}>${(product.price * 0.9).toFixed(2)}</b><br />
+                    Parcelado no cartão sem juros: <b style={{ color: "var(--gray-800)" }}>${(product.price).toFixed(2)}</b>
                   </div>
                   <div className={styles.qtyControl}>
                     <span style={{ fontWeight: "bold", marginRight: 8, color: "var(--gray-800)" }}>Quant.</span>
@@ -42,12 +53,12 @@ export function Cart({ cart, onIncrease, onDecrease, onRemove, onClear }) {
                     REMOVER
                   </button>
                 </div>
-                <div style={{ minWidth: 120, textAlign: "right" }}>
-                  <div style={{ color: "#ff6600", fontWeight: "bold", fontSize: "1.2rem" }}>
-                    R$ {(product.price * product.quantity).toFixed(2)}
+                <div style={{ minWidth: 160, textAlign: "right" }}>
+                  <div style={{ color: "#ff6600", fontWeight: "bold", fontSize: "1.4rem" }}>
+                    ${(product.price * product.quantity).toFixed(2)}
                   </div>
-                  <div style={{ fontSize: "0.9rem", color: "#009900" }}>
-                    no PIX: R$ {(product.price * 0.9 * product.quantity).toFixed(2)}
+                  <div style={{ fontSize: "1.05rem", color: "#009900" }}>
+                    no PIX: ${(product.price * 0.9 * product.quantity).toFixed(2)}
                   </div>
                 </div>
               </li>
@@ -59,49 +70,53 @@ export function Cart({ cart, onIncrease, onDecrease, onRemove, onClear }) {
         <div style={{
           background: "var(--gray-200)",
           borderRadius: 8,
-          marginTop: 24,
-          padding: "1.5rem"
+          marginTop: 40,
+          padding: "2.2rem"
         }}>
-          <h3 style={{ fontSize: "1.1rem", marginBottom: 8, color: "var(--gray-800)" }}>🛡️ SERVIÇOS</h3>
-          <div style={{ fontWeight: "bold", marginBottom: 8, color: "var(--gray-700)" }}>GARANTIA ESTENDIDA ORIGINAL AMPLIADA</div>
+          <h3 style={{ fontSize: "1.25rem", marginBottom: 12, color: "var(--gray-800)" }}>🛡️ SERVIÇOS</h3>
+          <div style={{ fontWeight: "bold", marginBottom: 12, color: "var(--gray-700)" }}>GARANTIA ESTENDIDA ORIGINAL AMPLIADA</div>
           <div style={{ color: "var(--gray-700)" }}>
             <label><input type="radio" name="garantia" defaultChecked /> Sem garantia</label><br />
-            <label><input type="radio" name="garantia" disabled /> 12 Meses de Garantia Estendida Kabum <span style={{ color: "#ff6600" }}>Até 10x sem juros de R$ 38,31</span></label><br />
-            <label><input type="radio" name="garantia" disabled /> 24 Meses de Garantia Estendida Kabum <span style={{ color: "#ff6600" }}>Até 10x sem juros de R$ 51,83</span></label>
+            <label><input type="radio" name="garantia" disabled /> 12 Meses de Garantia Estendida Kabum <span style={{ color: "#ff6600" }}>Até 10x sem juros de $38.31</span></label><br />
+            <label><input type="radio" name="garantia" disabled /> 24 Meses de Garantia Estendida Kabum <span style={{ color: "#ff6600" }}>Até 10x sem juros de $51.83</span></label>
           </div>
-          <div style={{ marginTop: 12, fontWeight: "bold", color: "var(--gray-800)" }}>Subtotal serviços: R$ 0,00</div>
+          <div style={{ marginTop: 16, fontWeight: "bold", color: "var(--gray-800)" }}>Subtotal serviços: $0.00</div>
         </div>
       </div>
       {/* Coluna do resumo */}
       <div className={styles.summary} style={{
-        flex: 1,
         background: "var(--gray-200)",
         border: "1px solid var(--gray-300)",
-        borderRadius: "8px",
-        padding: "1.5rem"
+        borderRadius: "12px",
+        padding: "3rem",
+        minWidth: 400,
+        maxWidth: 540,
+        position: "sticky",
+        top: "2rem",
+        alignSelf: "flex-start"
       }}>
-        <h3 style={{ fontWeight: "bold", fontSize: "1.2rem", marginBottom: 16, color: "var(--gray-800)" }}>RESUMO</h3>
-        <div style={{ marginBottom: "1rem", color: "var(--gray-700)" }}>
+        <h3 style={{ fontWeight: "bold", fontSize: "1.6rem", marginBottom: 28, color: "var(--gray-800)" }}>RESUMO</h3>
+        <div style={{ marginBottom: "1.7rem", color: "var(--gray-700)" }}>
           <span>Valor dos Produtos:</span>
-          <strong style={{ float: "right", color: "var(--gray-800)" }}>R$ {total.toFixed(2)}</strong>
+          <strong style={{ float: "right", color: "var(--gray-800)" }}>${total.toFixed(2)}</strong>
         </div>
-        <div style={{ marginBottom: "1rem", color: "var(--gray-700)" }}>
+        <div style={{ marginBottom: "1.7rem", color: "var(--gray-700)" }}>
           <span>Total a prazo:</span>
-          <strong style={{ float: "right", color: "var(--gray-800)" }}>R$ {total.toFixed(2)}</strong>
-          <div style={{ fontSize: "0.9em", color: "var(--gray-600)" }}>
-            (em até 10x de R$ {(total / 10).toFixed(2)} sem juros)
+          <strong style={{ float: "right", color: "var(--gray-800)" }}>${total.toFixed(2)}</strong>
+          <div style={{ fontSize: "1.07em", color: "var(--gray-600)" }}>
+            (em até 10x de ${(total / 10).toFixed(2)} sem juros)
           </div>
         </div>
         <div style={{
           background: "#e6fff0",
-          padding: "0.5rem",
-          borderRadius: "4px",
-          marginBottom: "1rem"
+          padding: "1.2rem",
+          borderRadius: "7px",
+          marginBottom: "1.7rem"
         }}>
           <span>Valor à vista no <b>PIX</b>:</span>
-          <strong style={{ float: "right", color: "#009900" }}>R$ {(total * 0.9).toFixed(2)}</strong>
-          <div style={{ fontSize: "0.9em", color: "#009900" }}>
-            (Economize: R$ {(total * 0.1).toFixed(2)})
+          <strong style={{ float: "right", color: "#009900" }}>${(total * 0.9).toFixed(2)}</strong>
+          <div style={{ fontSize: "1.07em", color: "#009900" }}>
+            (Economize: ${(total * 0.1).toFixed(2)})
           </div>
         </div>
         <button style={{
@@ -109,12 +124,12 @@ export function Cart({ cart, onIncrease, onDecrease, onRemove, onClear }) {
           background: "#ff6600",
           color: "#fff",
           border: "none",
-          padding: "0.75rem",
-          borderRadius: "4px",
+          padding: "1.3rem",
+          borderRadius: "7px",
           fontWeight: "bold",
-          fontSize: "1.1rem",
+          fontSize: "1.25rem",
           cursor: "pointer",
-          marginBottom: "0.5rem"
+          marginBottom: "1.1rem"
         }}>
           CONTINUAR
         </button>
@@ -123,10 +138,10 @@ export function Cart({ cart, onIncrease, onDecrease, onRemove, onClear }) {
           background: "#fff",
           color: "#ff6600",
           border: "2px solid #ff6600",
-          padding: "0.75rem",
-          borderRadius: "4px",
+          padding: "1.3rem",
+          borderRadius: "7px",
           fontWeight: "bold",
-          fontSize: "1.1rem",
+          fontSize: "1.25rem",
           cursor: "pointer"
         }}>
           VOLTAR
