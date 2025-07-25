@@ -39,3 +39,12 @@
   text-decoration: none;
   color: var(--primary);
 }
+
+.searchInput {
+  width: 300px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--gray-400);
+  margin: 0 16px;
+}
