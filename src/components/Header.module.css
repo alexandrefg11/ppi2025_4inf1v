@@ -25,6 +25,10 @@
   max-width: 20rem;
 }
 
+.container p {
+  font-size: 1.5rem;
+}
+
 .cartInfo {
   border-radius: 3rem;
   background-color: var(--primary-light);
@@ -40,11 +44,20 @@
   color: var(--primary);
 }
 
-.searchInput {
-  width: 300px;
-  padding: 8px 12px;
-  font-size: 1rem;
-  border-radius: 6px;
-  border: 1px solid var(--gray-400);
-  margin: 0 16px;
+.cartIcon {
+  position: relative;
+  display: inline-block;
+}
+
+.cartCount {
+  position: absolute;
+  top: -0.8rem;
+  right: -2rem;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  background-color: var(--primary-dark);
+  color: var(--gray-100);
+  padding: 0.2rem 0.6rem;
+  font-weight: bold;
+  z-index: 1;
 }
