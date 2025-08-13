@@ -12,17 +12,14 @@ export function Header() {
       <Link to="/" className={styles.link}>
         <h1>TJA Megastore</h1>
       </Link>
+      <nav className={styles.nav}>
+        <Link to="/login" className={styles.link}>Login</Link>
+        <Link to="/cadastro" className={styles.link}>Cadastro</Link>
+        <Link to="/produtos" className={styles.link}>Gerenciar Produtos</Link>
+      </nav>
       <Link to="/cart" className={styles.link}>
         <div className={styles.cartInfo}>
-          <div className={styles.cartIcon}>
-            <ShoppingBasket size={32} />
-            {cart.length > 0 && (
-              <span className={styles.cartCount}>
-                {cart.reduce((total, item) => total + item.quantity, 0)}
-              </span>
-            )}
-          </div>
-
+          <ShoppingBasket size={32} />
           <p>
             Total: ${" "}
             {cart
