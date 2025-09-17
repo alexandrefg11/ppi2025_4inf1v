@@ -1,5 +1,7 @@
+import { use } from "react";
 import { useState, useEffect, createContext } from "react";
-
+import { $ } from "react-router/dist/development/index-react-server-client-kY8DvDF3";
+import {upabase } from "../utils/supabase";
 export const CartContext = createContext({
   // Context to manage the products state
   products: [],
@@ -23,6 +25,21 @@ export function CartProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+ useEffect(() => {
+  async function fetchProductssupabase(){
+    const {data, error} = await supabase
+    .from('product_1v')
+    .select();
+    if(error){
+      setError("fetching products failed! ${error}");}
+      else {
+        setProducts(data);
+      }
+      setLoading(false);
+      return;
+    }
+  }
+
   useEffect(() => {
     async function fetchProducts() {
       try {
@@ -38,7 +55,7 @@ export function CartProvider({ children }) {
     fetchProducts();
   }, []);
 
-  // State to manage the cart
+  
   const [cart, setCart] = useState([]);
 
   function addToCart(product) {
